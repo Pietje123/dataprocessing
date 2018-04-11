@@ -30,18 +30,29 @@ def extract_tvseries(dom):
     series_data = dom.find_all("div", class_ = "lister-item-content")
     all_series = []
 
-
     for series in series_data:
+
+        # get all the data from the html
         title = series.a.string
         runtime = series.find("span", class_ = "runtime").string.rstrip(" min")
         genre = series.find("span", class_ = "genre").string
+
+        # to remove the " " and \n in genre
         cleaned_genre = genre.strip()
         rating = series.strong.string
+
+        # -2 because the second "p" tag is the required one
         series_actors = series.find_all("p")[-2].find_all("a")
         tmp = ""
+
+        # to add all the actors from the list series_actors to actors
         for actor in series_actors:
             tmp += actor.string + ", "
+
+        # remove the last ", " for it's ugly
         actors = tmp.rstrip(", ")
+
+        # make a dict
         all_series.append({'title' :title, 'runtime' :runtime, 'genre'
                             :cleaned_genre, 'rating' :rating, 'actors' :actors})
     # ADD YOUR CODE HERE TO EXTRACT THE ABOVE INFORMATION ABOUT THE
@@ -59,6 +70,7 @@ def save_csv(outfile, tvseries):
     writer = csv.writer(outfile)
     writer.writerow(['Title', 'Rating', 'Genre', 'Actors', 'Runtime'])
 
+    # write all the data to the csv file
     for data in tvseries:
         writer.writerow([data['title'], data['rating'], data['genre'], data['actors'], data['runtime']])
 
