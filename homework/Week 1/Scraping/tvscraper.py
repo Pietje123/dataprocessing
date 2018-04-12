@@ -4,7 +4,7 @@
 """
 This script scrapes IMDB and outputs a CSV file with highest rated tv series.
 """
-
+import re
 import csv
 from requests import get
 from requests.exceptions import RequestException
@@ -33,16 +33,42 @@ def extract_tvseries(dom):
     for series in series_data:
 
         # get all the data from the html
-        title = series.a.string
-        runtime = series.find("span", class_ = "runtime").string.rstrip(" min")
-        genre = series.find("span", class_ = "genre").string
+        title = series.a
+
+        if title:
+            title = title.string
+
+        else:
+            title = "Missing"
+
+        runtime = series.find("span", class_ = "runtime")
+
+        if runtime:
+            runtime = runtime.string.rstrip(" min")
+
+        else:
+            runtime = "Missing"
+
+        genre = series.find("span", class_ = "genre")
+        cleaned_genre = "Missing"
+
+        if genre:
+            genre = genre.string
+            cleaned_genre = genre.strip()
+
 
         # to remove the " " and \n in genre
-        cleaned_genre = genre.strip()
-        rating = series.strong.string
+
+        rating = series.strong
+
+        if rating:
+            rating = rating.string
+
+        else:
+            rating = "Missing"
 
         # -2 because the second "p" tag is the required one
-        series_actors = series.find_all("p")[-2].find_all("a")
+        series_actors = series.find_all(class_="", href = re.compile("name"))
         tmp = ""
 
         # to add all the actors from the list series_actors to actors
