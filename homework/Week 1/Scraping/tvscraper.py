@@ -35,6 +35,7 @@ def extract_tvseries(dom):
         # get all the data from the html
         title = series.a
 
+        # check if found else make missing
         if title:
             title = title.string
 
@@ -43,6 +44,7 @@ def extract_tvseries(dom):
 
         runtime = series.find("span", class_ = "runtime")
 
+        # check if found else make missing
         if runtime:
             runtime = runtime.string.rstrip(" min")
 
@@ -52,22 +54,22 @@ def extract_tvseries(dom):
         genre = series.find("span", class_ = "genre")
         cleaned_genre = "Missing"
 
+        # check if found else make missing
         if genre:
             genre = genre.string
             cleaned_genre = genre.strip()
 
 
         # to remove the " " and \n in genre
-
         rating = series.strong
 
+        # check if found else make missing
         if rating:
             rating = rating.string
 
         else:
             rating = "Missing"
 
-        # -2 because the second "p" tag is the required one
         series_actors = series.find_all(class_="", href = re.compile("name"))
         tmp = ""
 
@@ -75,7 +77,7 @@ def extract_tvseries(dom):
         for actor in series_actors:
             tmp += actor.string + ", "
 
-        # remove the last ", " for it's ugly
+        # remove the last ", " because it's ugly
         actors = tmp.rstrip(", ")
 
         # make a dict
