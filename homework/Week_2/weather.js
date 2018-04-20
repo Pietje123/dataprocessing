@@ -29,14 +29,14 @@ function makeGraph(rawFile){
     line = rawdata[i].split(",");
 
     // only interested in numbers
-    if (isNaN(line[1])) {
+    if (isNaN(line[2])) {
       continue;
 
     }
     // temperature is given in 0.1 degrees C
     // the data is given in the order (date,temperature)
-    let date_data = line[0].trim();
-    let temperature = line[1] / 10;
+    let date_data = line[1].trim();
+    let temperature = line[2] / 10;
 
     // get the max/min temperature
     if (temperature < tempMin){
@@ -55,6 +55,7 @@ function makeGraph(rawFile){
     let day = date_data.slice(6);
     let date = new Date(year, month, day);
     data.push({"temperature" : temperature, "date" : date});
+    console.log(date);
   }
 
   // some variables
@@ -72,7 +73,7 @@ function makeGraph(rawFile){
   var ctx = canvas.getContext('2d');
   var width = 1000;
   var height = 500;
-  var padding = 50;
+  var padding = 100;
   ctx.fillStyle = 'rgb(0,0,0)';
 
   // make the borders of the graph
@@ -127,7 +128,8 @@ function makeGraph(rawFile){
       break;
     }
     // write the text and draw the labels
-    ctx.fillText(temp + ' C', 0, padding * 1.5  + i * scaleY * tempScale);
+    ctx.textAlign = 'right';
+    ctx.fillText(temp, padding - 15, zero + i * scaleY * tempScale);
     temp -= tempScale;
     ctx.lineTo(padding - 10, zero + i * scaleY * tempScale);
     ctx.moveTo(padding, zero + (i + 1) * scaleY * tempScale);
@@ -137,8 +139,19 @@ function makeGraph(rawFile){
   var months = 12;
   var monthLength = width / months;
   var monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  ctx.textAlign = 'right';
 
+  // tick lables
+  ctx.font = '30px serif';
+  ctx.textAlign = "center"
+  ctx.save();
+  ctx.translate(padding / 4, height / 2 + padding);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText("Temperature in degrees", 0, 0);
+  ctx.restore();
+
+  ctx.fillText("Months", width / 2 + padding, height + padding * 2.5);
+  ctx.font = '20px serif';
+  ctx.textAlign = "right"
   // writes the months at the right ticks
   for (let i = 0; i < months; i++){
 
