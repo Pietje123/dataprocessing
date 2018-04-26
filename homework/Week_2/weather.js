@@ -28,10 +28,9 @@ function makeGraph(rawFile){
   for (var i = 1; i < rawdata.length; i++){
     line = rawdata[i].split(",");
 
-    // only interested in numbers
+    // only interested in numbers for temperature
     if (isNaN(line[2])) {
       continue;
-
     }
     // temperature is given in 0.1 degrees C
     // the data is given in the order (date,temperature)
