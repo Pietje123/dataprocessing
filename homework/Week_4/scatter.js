@@ -9,8 +9,8 @@ window.onload = function() {
 
   console.log('Yes, you can!')
 
-  var waste = "http://stats.oecd.org/SDMX-JSON/data/MUNW/AUT+BEL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+IRL+ITA+LUX+NLD+NOR+POL+ESP+SWE+CHE+GBR+LTU+RUS.MUNICIPAL?startTime=2006&endTime=2014"
-  var eco = "http://stats.oecd.org/SDMX-JSON/data/GREEN_GROWTH/AUT+BEL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+IRL+ITA+LUX+NLD+NOR+POL+ESP+SWE+CHE+GBR+LTU+RUS.CO2_PBPROD?startTime=2006&endTime=2014"
+  var waste = "https://stats.oecd.org/SDMX-JSON/data/MUNW/AUT+BEL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+IRL+ITA+LUX+NLD+NOR+POL+ESP+SWE+CHE+GBR+LTU+RUS.MUNICIPAL?startTime=2006&endTime=2014"
+  var eco = "https://stats.oecd.org/SDMX-JSON/data/GREEN_GROWTH/AUT+BEL+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+IRL+ITA+LUX+NLD+NOR+POL+ESP+SWE+CHE+GBR+LTU+RUS.CO2_PBPROD?startTime=2006&endTime=2014"
 
 
   // wait till data is loaded, then execute doFunction
