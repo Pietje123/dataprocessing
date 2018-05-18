@@ -1,0 +1,63 @@
+<!-- Alwan Rashid (10580204) -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <!-- some libraries -->
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://d3js.org/d3.v4.min.js"></script>
+      <script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+      <script src="https://d3js.org/topojson.v1.min.js"></script>
+      <script src="europe.js"></script>
+      <link rel="stylesheet" href="europe.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+      <title>Barchart</title>
+    </head>
+    <body>
+      <div class="btn-group">
+        <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#" id="Men">Men</a></li>
+          <li><a href="#" id="Women">Women</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+
+      <h1>Alwan Rashid (10580204)</h1>
+      <a href="https://worldpopulationreview.com/countries/countries-in-europe/"> Datasource</a>
+      <a href="https://stats.oecd.org/Index.aspx?DataSetCode=BLI"> Datasource</a>
+      
+<!-- to have the text next to the map -->
+      <table class="table table-bordered">
+        <tr>
+          <td>
+            <div id="container">
+              <h1>Map of Europe</h1>
+            </div>
+          </td>
+          <td><p>This is a map of Europe. When you click on a country the bar chart updates to the selected country.
+          The bar chart displays the life satisfaction, life expectancy and employment rate for the year 2017. In the dropdown
+          menu you can chose to display the data for men of women. When you hover over a country, it displays the amount of people who live in that country.</p> 
+          <!-- to update the data from the bar chart -->
+            <p id="current"></p>
+          </td>
+        </tr> 
+      </table>  
+      <!-- the bar chart itself, id to help d3 to find the container -->
+      <div id="barchart">
+        <!-- for the title of the bar chart -->
+        <h2></h2>
+      </div>
+
+
+
+    </body>
+</html>

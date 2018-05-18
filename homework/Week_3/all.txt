@@ -1,0 +1,3 @@
+Syntax Error - Bad syntax: time - System.ArgumentException: Bad time syntax: 2015?DATAONLY
+   at DotStat.Time.TimePeriodParser.GetTimeFromSdmxStandardTimePeriod(String timeValue)
+   at DotStat.Domain.Parsers.SdmxTimeParser.GetTimeFromSdmxStandardTimePeriod(String timeValue)

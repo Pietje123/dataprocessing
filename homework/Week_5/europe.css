@@ -1,0 +1,37 @@
+/*Alwan Rashid (10580204)*/
+
+
+
+svg {
+	background-color: white;
+}
+
+#container {
+	background-color: white;
+}
+
+#barchart{
+background-color: white;
+}
+
+
+/* to make the sea white */
+#Antarctica{
+	fill: white
+}
+
+/* to make the country light up */
+path:hover, rect:hover{
+	fill: rgba(8, 81, 156, 0.2)
+}
+
+/* to render the data for population */
+div.tooltip {
+		position: absolute;
+		text-align: center;
+		padding: 2px;
+		font: 12px sans-serif;
+		background: #fff;
+		border: 0px;
+		pointer-events: none;
+}
